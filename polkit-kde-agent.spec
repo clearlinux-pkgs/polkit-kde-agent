@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.15.4
-Release  : 3
-URL      : https://download.kde.org/stable/plasma/5.15.4/polkit-kde-agent-1-5.15.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.4/polkit-kde-agent-1-5.15.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.4/polkit-kde-agent-1-5.15.4.tar.xz.sig
-Summary  : Daemon providing a polkit authentication UI for KDE
+Version  : 1.5.15.5
+Release  : 4
+URL      : https://download.kde.org/stable/plasma/5.15.5/polkit-kde-agent-1-5.15.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.5/polkit-kde-agent-1-5.15.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.5/polkit-kde-agent-1-5.15.5.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: polkit-kde-agent-data = %{version}-%{release}
@@ -49,16 +49,17 @@ locales components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.15.4
+%setup -q -n polkit-kde-agent-1-5.15.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557046988
+export SOURCE_DATE_EPOCH=1558333677
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -67,11 +68,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557046988
+export SOURCE_DATE_EPOCH=1558333677
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
 cp COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/COPYING
