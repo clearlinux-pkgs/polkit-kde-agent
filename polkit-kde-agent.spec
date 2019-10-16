@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.16.5
-Release  : 9
-URL      : https://download.kde.org/stable/plasma/5.16.5/polkit-kde-agent-1-5.16.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.5/polkit-kde-agent-1-5.16.5.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.5/polkit-kde-agent-1-5.16.5.tar.xz.sig
+Version  : 1.5.17.0
+Release  : 10
+URL      : https://download.kde.org/stable/plasma/5.17.0/polkit-kde-agent-1-5.17.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.0/polkit-kde-agent-1-5.17.0.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.17.0/polkit-kde-agent-1-5.17.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -49,14 +49,14 @@ locales components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.16.5
+%setup -q -n polkit-kde-agent-1-5.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567643363
+export SOURCE_DATE_EPOCH=1571269387
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -68,14 +68,14 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567643363
+export SOURCE_DATE_EPOCH=1571269387
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/COPYING
+cp %{_builddir}/polkit-kde-agent-1-5.17.0/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -93,7 +93,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/polkit-kde-agent/COPYING
+/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
 
 %files locales -f polkit-kde-authentication-agent-1.lang
 %defattr(-,root,root,-)
