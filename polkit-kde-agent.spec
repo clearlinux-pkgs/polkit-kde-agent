@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.17.4
-Release  : 13
-URL      : https://download.kde.org/stable/plasma/5.17.4/polkit-kde-agent-1-5.17.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.17.4/polkit-kde-agent-1-5.17.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.17.4/polkit-kde-agent-1-5.17.4.tar.xz.sig
+Version  : 1.5.17.5
+Release  : 14
+URL      : https://download.kde.org/stable/plasma/5.17.5/polkit-kde-agent-1-5.17.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.5/polkit-kde-agent-1-5.17.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.17.5/polkit-kde-agent-1-5.17.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -49,15 +49,15 @@ locales components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.17.4
-cd %{_builddir}/polkit-kde-agent-1-5.17.4
+%setup -q -n polkit-kde-agent-1-5.17.5
+cd %{_builddir}/polkit-kde-agent-1-5.17.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576607000
+export SOURCE_DATE_EPOCH=1578430282
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -73,10 +73,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576607000
+export SOURCE_DATE_EPOCH=1578430282
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.17.4/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/polkit-kde-agent-1-5.17.5/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
