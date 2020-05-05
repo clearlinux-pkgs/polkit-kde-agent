@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.18.4.1
-Release  : 19
-URL      : https://download.kde.org/stable/plasma/5.18.4/polkit-kde-agent-1-5.18.4.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.18.4/polkit-kde-agent-1-5.18.4.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.18.4/polkit-kde-agent-1-5.18.4.1.tar.xz.sig
+Version  : 1.5.18.5
+Release  : 20
+URL      : https://download.kde.org/stable/plasma/5.18.5/polkit-kde-agent-1-5.18.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.18.5/polkit-kde-agent-1-5.18.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.18.5/polkit-kde-agent-1-5.18.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -18,6 +18,8 @@ Requires: polkit-kde-agent-license = %{version}-%{release}
 Requires: polkit-kde-agent-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
+BuildRequires : ki18n-dev
 BuildRequires : polkit-qt-dev
 BuildRequires : qtbase-dev mesa-dev
 
@@ -49,15 +51,15 @@ locales components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.18.4.1
-cd %{_builddir}/polkit-kde-agent-1-5.18.4.1
+%setup -q -n polkit-kde-agent-1-5.18.5
+cd %{_builddir}/polkit-kde-agent-1-5.18.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585690738
+export SOURCE_DATE_EPOCH=1588703656
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -65,18 +67,18 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1585690738
+export SOURCE_DATE_EPOCH=1588703656
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.18.4.1/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/polkit-kde-agent-1-5.18.5/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
