@@ -1,5 +1,5 @@
 PKG_NAME := polkit-kde-agent
-URL = https://download.kde.org/stable/plasma/5.19.4/polkit-kde-agent-1-5.19.4.tar.xz
+URL = https://download.kde.org/stable/plasma/5.20.0/polkit-kde-agent-1-5.20.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
