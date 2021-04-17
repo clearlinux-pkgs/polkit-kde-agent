@@ -5,17 +5,18 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.20.5
-Release  : 30
-URL      : https://download.kde.org/stable/plasma/5.20.5/polkit-kde-agent-1-5.20.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.5/polkit-kde-agent-1-5.20.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.5/polkit-kde-agent-1-5.20.5.tar.xz.sig
+Version  : 1.5.21.4
+Release  : 31
+URL      : https://download.kde.org/stable/plasma/5.21.4/polkit-kde-agent-1-5.21.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.21.4/polkit-kde-agent-1-5.21.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.21.4/polkit-kde-agent-1-5.21.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: polkit-kde-agent-data = %{version}-%{release}
 Requires: polkit-kde-agent-license = %{version}-%{release}
 Requires: polkit-kde-agent-locales = %{version}-%{release}
+Requires: polkit-kde-agent-services = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
@@ -50,16 +51,24 @@ Group: Default
 locales components for the polkit-kde-agent package.
 
 
+%package services
+Summary: services components for the polkit-kde-agent package.
+Group: Systemd services
+
+%description services
+services components for the polkit-kde-agent package.
+
+
 %prep
-%setup -q -n polkit-kde-agent-1-5.20.5
-cd %{_builddir}/polkit-kde-agent-1-5.20.5
+%setup -q -n polkit-kde-agent-1-5.21.4
+cd %{_builddir}/polkit-kde-agent-1-5.21.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609883468
+export SOURCE_DATE_EPOCH=1618703926
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -75,10 +84,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1609883468
+export SOURCE_DATE_EPOCH=1618703926
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.20.5/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/polkit-kde-agent-1-5.21.4/COPYING %{buildroot}/usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -97,6 +106,10 @@ popd
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/polkit-kde-agent/7c203dee3a03037da436df03c4b25b659c073976
+
+%files services
+%defattr(-,root,root,-)
+/usr/lib/systemd/user/plasma-polkit-agent.service
 
 %files locales -f polkit-kde-authentication-agent-1.lang
 %defattr(-,root,root,-)
