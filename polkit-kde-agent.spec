@@ -4,7 +4,7 @@
 #
 Name     : polkit-kde-agent
 Version  : 1.5.23.0
-Release  : 35
+Release  : 36
 URL      : https://download.kde.org/stable/plasma/5.23.0/polkit-kde-agent-1-5.23.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.23.0/polkit-kde-agent-1-5.23.0.tar.xz
 Summary  : No detailed summary available
