@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.26.4
-Release  : 59
-URL      : https://download.kde.org/stable/plasma/5.26.4/polkit-kde-agent-1-5.26.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.4/polkit-kde-agent-1-5.26.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.4/polkit-kde-agent-1-5.26.4.tar.xz.sig
+Version  : 1.5.26.5
+Release  : 60
+URL      : https://download.kde.org/stable/plasma/5.26.5/polkit-kde-agent-1-5.26.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.5/polkit-kde-agent-1-5.26.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.5/polkit-kde-agent-1-5.26.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0
@@ -21,6 +21,9 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
 BuildRequires : polkit-qt-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 No detailed description available
@@ -58,35 +61,35 @@ services components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.26.4
-cd %{_builddir}/polkit-kde-agent-1-5.26.4
+%setup -q -n polkit-kde-agent-1-5.26.5
+cd %{_builddir}/polkit-kde-agent-1-5.26.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1669816503
+export SOURCE_DATE_EPOCH=1673301754
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1669816503
+export SOURCE_DATE_EPOCH=1673301754
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.26.4/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
-cp %{_builddir}/polkit-kde-agent-1-5.26.4/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
+cp %{_builddir}/polkit-kde-agent-1-5.26.5/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
+cp %{_builddir}/polkit-kde-agent-1-5.26.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 pushd clr-build
 %make_install
 popd
