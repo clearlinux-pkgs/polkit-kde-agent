@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.27.0
-Release  : 62
-URL      : https://download.kde.org/stable/plasma/5.27.0/polkit-kde-agent-1-5.27.0.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.0/polkit-kde-agent-1-5.27.0.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.0/polkit-kde-agent-1-5.27.0.tar.xz.sig
+Version  : 1.5.27.1
+Release  : 63
+URL      : https://download.kde.org/stable/plasma/5.27.1/polkit-kde-agent-1-5.27.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.1/polkit-kde-agent-1-5.27.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.1/polkit-kde-agent-1-5.27.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0
@@ -20,8 +20,6 @@ Requires: polkit-kde-agent-services = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules-data
-BuildRequires : kwindowsystem-dev
-BuildRequires : pkgconfig(x11)
 BuildRequires : polkit-qt-dev
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -63,15 +61,15 @@ services components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.27.0
-cd %{_builddir}/polkit-kde-agent-1-5.27.0
+%setup -q -n polkit-kde-agent-1-5.27.1
+cd %{_builddir}/polkit-kde-agent-1-5.27.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676870305
+export SOURCE_DATE_EPOCH=1677184501
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -87,11 +85,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1676870305
+export SOURCE_DATE_EPOCH=1677184501
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.27.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
-cp %{_builddir}/polkit-kde-agent-1-5.27.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
+cp %{_builddir}/polkit-kde-agent-1-5.27.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
+cp %{_builddir}/polkit-kde-agent-1-5.27.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 pushd clr-build
 %make_install
 popd
