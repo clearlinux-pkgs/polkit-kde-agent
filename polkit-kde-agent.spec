@@ -7,7 +7,7 @@
 #
 Name     : polkit-kde-agent
 Version  : 1.5.27.5
-Release  : 67
+Release  : 68
 URL      : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz.sig
@@ -71,7 +71,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684806071
+export SOURCE_DATE_EPOCH=1685566651
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -104,7 +104,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684806071
+export SOURCE_DATE_EPOCH=1685566651
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
 cp %{_builddir}/polkit-kde-agent-1-5.27.5/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
