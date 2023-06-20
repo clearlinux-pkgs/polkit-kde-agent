@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : polkit-kde-agent
-Version  : 1.5.27.5
-Release  : 68
-URL      : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.27.5/polkit-kde-agent-1-5.27.5.tar.xz.sig
+Version  : 1.5.27.6
+Release  : 69
+URL      : https://download.kde.org/stable/plasma/5.27.6/polkit-kde-agent-1-5.27.6.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.27.6/polkit-kde-agent-1-5.27.6.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.27.6/polkit-kde-agent-1-5.27.6.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0
@@ -63,15 +63,15 @@ services components for the polkit-kde-agent package.
 
 
 %prep
-%setup -q -n polkit-kde-agent-1-5.27.5
-cd %{_builddir}/polkit-kde-agent-1-5.27.5
+%setup -q -n polkit-kde-agent-1-5.27.6
+cd %{_builddir}/polkit-kde-agent-1-5.27.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685566651
+export SOURCE_DATE_EPOCH=1687283948
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -104,11 +104,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1685566651
+export SOURCE_DATE_EPOCH=1687283948
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-kde-agent
-cp %{_builddir}/polkit-kde-agent-1-5.27.5/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
-cp %{_builddir}/polkit-kde-agent-1-5.27.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
+cp %{_builddir}/polkit-kde-agent-1-5.27.6/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
+cp %{_builddir}/polkit-kde-agent-1-5.27.6/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-kde-agent/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
 pushd clr-build-avx2
 %make_install_v3  || :
 popd
