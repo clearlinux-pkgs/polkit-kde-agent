@@ -9,7 +9,7 @@
 #
 Name     : polkit-kde-agent
 Version  : 1.6.0.2
-Release  : 74
+Release  : 75
 URL      : https://download.kde.org/stable/plasma/6.0.2/polkit-kde-agent-1-6.0.2.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.2/polkit-kde-agent-1-6.0.2.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.2/polkit-kde-agent-1-6.0.2.tar.xz.sig
